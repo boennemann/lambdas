@@ -2,10 +2,10 @@ var express = require('express')
 var cors = require('cors')
 
 var config = {
-  'secrets' : {
-    'clientId' : process.env.CLIENT_ID,
-    'clientSecret' : process.env.CLIENT_SECRET,
-    'redirectUrl' : 'http://localhost:8000/callback'
+  secrets: {
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    redirectUrl: 'http://localhost:8000/callback'
   }
 }
 
