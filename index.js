@@ -1,7 +1,7 @@
-var express = require('express')
-var cors = require('cors')
+const express = require('express')
+const cors = require('cors')
 
-var config = {
+const config = {
   secrets: {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -9,33 +9,30 @@ var config = {
   }
 }
 
-var foursquare = require('node-foursquare')(config)
+const foursquare = require('node-foursquare')(config)
 
-var lastFetched = 0;
-var lastLocation;
+let lastFetched = 0
+let lastLocation
 
-var app = express()
+const app = express()
 app.use(cors())
-app.get('/location', function(req, res) {
-  var now = Date.now()
-  if (lastLocation && (lastFetched - now < 6e5)) {
+app.get('/location', (req, res) => {
+  const now = Date.now()
+
+  if (lastLocation && (lastFetched - now < 600000)) {
     console.log('location from cache')
     return res.status(200).send({
       location: lastLocation
-    });
+    })
   }
-  foursquare.Users.getCheckins('self', {
-    limit: '1'
-  }, process.env.AUTH_TOKEN, function(err, data) {
-    if (err) {
-      res.status(500).send(err)
-    }
+
+  foursquare.Users.getCheckins('self', {limit: '1'}, process.env.AUTH_TOKEN, (err, data) => {
+    if (err) return res.status(500).send(err)
+
     console.log('location from 4sq')
     lastLocation = data.checkins.items[0].venue.location
     lastFetched = now
-    res.status(200).send({
-      location: lastLocation
-    })
+    res.status(200).send({location: lastLocation})
   })
 })
 
