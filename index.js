@@ -16,7 +16,7 @@ let lastLocation
 
 const app = express()
 app.use(cors())
-app.get('/location', (req, res) => {
+app.get('/', (req, res) => {
   const now = Date.now()
 
   if (lastLocation && (lastFetched - now < 600000)) {
