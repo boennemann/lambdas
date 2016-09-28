@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "deploy": "now -e AUTH_TOKEN=@4sq-token -e CLIENT_ID=@4sq-client-id -e CLIENT_SECRET=@4sq-client-secret",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stephan Bönnemann",
