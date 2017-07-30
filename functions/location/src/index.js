@@ -19,6 +19,7 @@ exports.handle = λ(async () => {
   return {
     statusCode: 200,
     headers: {
+      'Access-Control-Allow-Origin': '*',
       'Cache-Control': 'public, max-age=600'
     },
     body: JSON.stringify({location})
