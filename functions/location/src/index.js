@@ -10,7 +10,10 @@ exports.handle = λ(async () => {
   const now = Date.now()
 
   if (location && (fetched - now < 600000)) {
-    return {location}
+    return {
+      statusCode: 200,
+      body: {location}
+    }
   }
 
   const {data} = await axios.get(
@@ -26,5 +29,8 @@ exports.handle = λ(async () => {
   location = data.response.checkins.items[0].venue.location
   fetched = now
 
-  return {location}
+  return {
+    statusCode: 200,
+    body: {location}
+  }
 })
