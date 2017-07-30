@@ -1,0 +1,15 @@
+{
+  "name": "personal",
+  "runtime": "nodejs6.10",
+  "memory": 128,
+  "timeout": 5,
+  "handler": "dist/index.handle",
+  "profile": "personal",
+  "role": "arn:aws:iam::044663453196:role/personal_lambda_function",
+  "environment": {},
+  "hooks": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js --bail",
+    "clean": "rm -rf dist",
+    "deploy": "../../node_modules/.bin/standard"
+  }
+}

@@ -1,18 +1,30 @@
 {
   "name": "location",
-  "version": "1.0.0",
   "description": "latest swarm location",
+  "version": "1.0.0",
+  "author": "Stephan Bönnemann",
+  "dependencies": {
+    "apex.js": "^2.0.0",
+    "axios": "^0.16.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-node6": "^11.0.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "standard": "^10.0.2",
+    "webpack": "^3.4.1"
+  },
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "deploy": "now -e AUTH_TOKEN=@4sq-token -e CLIENT_ID=@4sq-client-id -e CLIENT_SECRET=@4sq-client-secret",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "apex deploy -E env.json",
+    "test": "standard"
   },
-  "author": "Stephan Bönnemann",
-  "license": "MIT",
-  "dependencies": {
-    "cors": "^2.4.2",
-    "express": "^4.9.8",
-    "node-foursquare": "^0.3.0"
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
   }
 }
