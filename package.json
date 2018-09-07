@@ -5,7 +5,9 @@
   "author": "Stephan Bönnemann",
   "dependencies": {
     "apex.js": "^2.0.0",
-    "axios": "^0.16.2"
+    "axios": "^0.16.2",
+    "n26": "^1.5.3",
+    "ynab": "^1.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
